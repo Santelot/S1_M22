@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playbook</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            padding: 20px;
+        }
+        .header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+        .banner {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+        .banner .title {
+            font-size: 1.2em;
+            display: flex;
+            justify-content: space-between;
+        }
+        .banner .subtitle {
+            font-size: 1em;
+            margin-top: 5px;
+            border-top: 1px solid white;
+            padding-top: 5px;
+        }
+        .content {
+            display: none;
+            padding: 10px;
+            border: 1px solid #ddd;
+            margin-bottom: 10px;
+        }
+        .step-title {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+            text-align: left;
+        }
+        .dialogue {
+            background-color: #f0f0f0;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 10px;
+            margin: 10px 0;
+            text-align: right;
+            font-style: italic;
+        }
+        .dropdown {
+            margin-bottom: 20px;
+        }
+        .dropdown select {
+            font-size: 1em;
+            padding: 5px;
+            margin-left: 10px;
+        }
+        table { width: 100%; border-collapse: collapse; }
+        td { padding: 8px; border: 1px solid #ddd; vertical-align: top; }
+    </style>
+    <script>
+        function updateActivities() {
+            var selectedTime = document.getElementById('time-select').value;
+            var activities = document.getElementsByClassName('activity');
+
+            document.getElementById('selected-time').innerText = "Tiempo efectivo de clase: " + selectedTime + " minutos";
+
+            for (var i = 0; i < activities.length; i++) {
+                activities[i].style.display = 'block';
+            }
+
+           if (selectedTime === '45') {
+                document.getElementById('activity-2').style.display = 'none';
+            } else if (selectedTime === '40') {
+                document.getElementById('activity-2').style.display = 'none';
+                document.getElementById('activity-4').style.display = 'none';
+                document.getElementById('activity-8').style.display = 'none';
+            }
+        }
+
+        function toggleContent(id) {
+            var content = document.getElementById(id);
+            if (content.style.display === "none") {
+                content.style.display = "block";
+            } else {
+                content.style.display = "none";
+            }
+        }
+    </script>
+</head>
+<body>
+
+<div class="header">
+    <h1>Playbook - S1 - M22</h1>
+</div>
+
+<div class="container">
+    <div class="dropdown">
+        <label for="time-select">Tiempo efectivo de Clase:</label>
+        <select id="time-select" onchange="updateActivities()">
+            <option value="50">50 minutos</option>
+            <option value="45">45 minutos</option>
+             <option value="40">40 minutos</option>
+        </select>
+    </div>
+
+    <h2 id="selected-time" class="time-title">Tiempo efectivo de clase: 50 minutos</h2>
+
+<!-- -------------------------------------------------Espacio para Actividades --------------------------------------------------------- -->
+
+<!-- Actividad 1 -->
+<div id="activity-1" class="activity">
+    <div class="banner" onclick="toggleContent('saludo_ritual')">
+        <div class="title">🎉 Actividad 1: Saludo y Ritual Gnius Club ⏰ Tiempo: 2.5 minutos</div>
+        <div class="subtitle">Inicio de la clase y preparación para aprender sobre impresión 3D.</div>
+    </div>
+    <div id="saludo_ritual" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 2 "Bienvenida".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Hola, Genios. Hoy nos adentraremos en el mundo de la impresión 3D. Aprenderemos sobre el proceso de 'Slicing', una etapa crucial para convertir nuestros modelos digitales en objetos reales. Prepárense para descubrir cómo funcionan las impresoras 3D y cómo podemos controlar este proceso."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (1 minuto):</strong> Proyectar Diapositiva 3 "¿Cómo están?".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Antes de empezar, quiero saber cómo se sienten hoy. Si están listos para crear, hagan un círculo con las manos. Si necesitan un momento para concentrarse, respiren profundo y cierren los ojos por un instante."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (0.5 minutos):</strong> Proyectar Diapositiva 4 "Gracias por Asistir".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Juntemos nuestras manos en agradecimiento por esta oportunidad de aprender y experimentar juntos. ¡Gracias por asistir, Genios!"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 4 (0.5 minutos):</strong> Proyectar Diapositiva 5 "Objetivos de la Misión".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "Nuestros objetivos para hoy son tres: 1. Comprender el concepto de 'Slicing' y sus variables. 2. Conocer la plataforma AstroPrint. 3. Preparar un modelo para impresión 3D usando AstroPrint."</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 2 -->
+<div id="activity-2" class="activity">
+    <div class="banner" onclick="toggleContent('innovacion_dia')">
+        <div class="title">💡 Actividad 2: Innovación del Día ⏰ Tiempo: 4 minutos</div>
+        <div class="subtitle">Presentación de una innovación en la impresión 3D.</div>
+    </div>
+    <div id="innovacion_dia" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 6 "Innovación del Día".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Hoy exploraremos una innovadora tecnología que está cambiando la manera en que producimos objetos. Les presento la 'Impresión 3D Continua', una técnica que permite crear objetos de manera continua y sin necesidad de construir capa por capa, haciendo el proceso más rápido y eficiente."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (2 minutos):</strong> Proyectar Diapositiva 7 "Video de Impresión 3D Continua".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "Observen este video para ver cómo funciona la impresión 3D continua. Presten atención a la velocidad del proceso y cómo los objetos se forman de manera continua. Esta técnica tiene el potencial de transformar la manufactura y la producción de objetos, haciéndola más rápida, económica y accesible."</td>
+            </tr>
+            <tr>
+                 <td><strong>PASO 3 (1.5 minutos):</strong> Proyectar Diapositiva 8 "Reflexión sobre Impresión Continua".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "La impresión 3D continua nos muestra cómo podemos optimizar el proceso de impresión para crear objetos de manera eficiente.  Hoy, aprenderemos las bases del 'Slicing', lo cual es esencial para preparar nuestros modelos para la impresión 3D, sin importar si son impresoras tradicionales o con tecnologías más innovadoras."</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 3 -->
+<div id="activity-3" class="activity">
+    <div class="banner" onclick="toggleContent('brain_gym')">
+        <div class="title">🧠 Actividad 3: Brain Gym ⏰ Tiempo: 20 minutos</div>
+        <div class="subtitle">Exploración de Slicing, configuración de AstroPrint y preparación de modelos.</div>
+    </div>
+    <div id="brain_gym" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (1 minuto):</strong> Proyectar Diapositiva 9 "Introducción al Slicing".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Hoy aprenderemos sobre 'Slicing', un proceso fundamental en la impresión 3D. El 'Slicing' consiste en tomar un modelo 3D y dividirlo en capas horizontales, para que la impresora 3D pueda construir el objeto capa por capa.  Este proceso es como si tomáramos un pastel y lo cortáramos en rodajas para poder construirlo por partes.  Comprender cómo funciona el 'Slicing' nos permite controlar la calidad y eficiencia de nuestras impresiones 3D."</td>
+            </tr>
+            <tr>
+                 <td><strong>PASO 2 (1.5 minutos):</strong> Proyectar Diapositiva 10 "¿Qué es el Slicing?".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "El 'Slicing' es el proceso mediante el cual un software toma un modelo 3D y lo convierte en instrucciones que la impresora 3D puede entender. Estas instrucciones se guardan en un archivo llamado G-Code, que es el lenguaje que las impresoras 3D utilizan para construir objetos.  Durante el 'Slicing', se definen muchos parámetros como la altura de las capas, la velocidad de impresión, la densidad del relleno y si se usarán soportes.  Cada uno de estos parámetros afectará la calidad y el tiempo de impresión. El 'Slicing' es como la receta que necesita la impresora 3D para hacer su trabajo correctamente."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (2 minutos):</strong> Proyectar Diapositiva 11 "Parámetros Clave del Slicing".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "Existen varios parámetros que podemos ajustar durante el 'Slicing'. Uno de los más importantes es la 'Altura de Capa', que define el grosor de cada capa de impresión.  Una altura de capa más pequeña hará que la impresión sea más detallada, pero tardará más tiempo.  Otro parámetro es la 'Densidad de Relleno' que define cuánto material se utiliza para rellenar el interior del objeto.  Una densidad mayor hará que el objeto sea más fuerte, pero también más pesado y tardará más tiempo en imprimirse.  Ajustar estos parámetros nos permite optimizar nuestras impresiones para que sean rápidas, detalladas y funcionales."</td>
+            </tr>
+            <tr>
+                 <td><strong>PASO 4 (2 minutos):</strong> Proyectar Diapositiva 12 "Otros Ajustes del Slicing".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Además de la altura de capa y la densidad del relleno, existen otros ajustes importantes: La 'Velocidad de Impresión' controla qué tan rápido se moverá el cabezal de la impresora.  Una velocidad más alta puede ahorrar tiempo, pero puede reducir la calidad de la impresión.  Los 'Soportes' son estructuras adicionales que se imprimen para sostener partes del modelo que están en voladizo, y que luego se deben retirar. La 'Adhesión a la Base' define cómo el objeto se adhiere a la cama de la impresora.  Entender estos parámetros nos permite controlar el proceso de impresión y adaptarlo a nuestras necesidades."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 5 (2 minutes):</strong> Proyectar Diapositiva 13 "Filamentos para Impresión 3D".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "El material con el que se imprimen los objetos 3D se llama filamento.  Existen diferentes tipos de filamento con propiedades distintas. El más común es el PLA (Ácido Poliláctico), un material biodegradable, fácil de imprimir y que funciona para la mayoría de los propósitos.  Otro tipo es el ABS (Acrilonitrilo Butadieno Estireno), un plástico más resistente y flexible, ideal para piezas funcionales, pero más difícil de imprimir. También existen otros materiales como el PETG, Nylon y Flexibles.  Conocer las propiedades de los diferentes filamentos nos permite elegir el material adecuado para cada proyecto."</td>
+            </tr>
+            <tr>
+                 <td><strong>PASO 6 (2 minutes):</strong> Proyectar Diapositiva 14 "Introducción a AstroPrint".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Hoy usaremos una plataforma llamada AstroPrint, que nos permite preparar nuestros modelos 3D para la impresión.  AstroPrint es una plataforma basada en la web, por lo que podemos usarla desde cualquier navegador.  En AstroPrint podemos subir modelos 3D, configurarlos para la impresión 3D y generar los archivos G-Code.  Además, AstroPrint nos permite conectarnos a nuestras impresoras 3D de manera remota, monitorear nuestras impresiones y muchas otras funciones. AstroPrint es como el centro de control de nuestras impresoras 3D."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 7 (2 minutes):</strong> Proyectar Diapositiva 15 "Configuración de un Perfil de Impresora en AstroPrint".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "Para usar AstroPrint, el primer paso es configurar un perfil de nuestra impresora.  En AstroPrint, debemos especificar qué tipo de impresora tenemos, sus dimensiones, y otros parámetros que son específicos para cada impresora.  Esta información es crucial para que AstroPrint pueda generar el G-Code correcto para nuestra impresora. Al configurar un perfil de impresora, le decimos a AstroPrint qué tipo de máquina usaremos para crear nuestros objetos, para que todo funcione correctamente."</td>
+            </tr>
+            <tr>
+                 <td><strong>PASO 8 (1.5 minutos):</strong> Proyectar Diapositiva 16 "Subir Modelos 3D a AstroPrint".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Una vez que tenemos configurado el perfil de nuestra impresora, podemos subir nuestros modelos 3D a AstroPrint.  Esto se hace mediante la opción 'Upload'. AstroPrint admite diferentes formatos como STL y OBJ, que son los formatos comunes que ya conocemos.  Después de que el modelo está subido, podemos ver su forma, tamaño y otros detalles en la plataforma. Al subir nuestro modelo, lo llevamos al mundo de AstroPrint, listo para ser impreso."</td>
+            </tr>
+            <tr>
+                 <td><strong>PASO 9 (2 minutes):</strong> Proyectar Diapositiva 17 "El Proceso de Slicing en AstroPrint".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Una vez subido el modelo, podemos usar las herramientas de 'Slicing' de AstroPrint. En AstroPrint, podemos ajustar la altura de las capas, la densidad de relleno, la velocidad de impresión y otros ajustes que ya aprendimos.  Es importante ajustar estos parámetros según el modelo y el resultado que queremos obtener. En AstroPrint, tenemos el poder de controlar el proceso de impresión a través de una interfaz fácil de usar."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 10 (1 minute):</strong> Proyectar Diapositiva 18 "Generación de G-Code".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Finalmente, cuando hemos terminado con el 'Slicing', AstroPrint genera un archivo G-Code que contiene las instrucciones para la impresora 3D.  Este archivo es el que se utiliza para la impresión real del objeto. El G-Code es el lenguaje que entiende la impresora, y AstroPrint se encarga de traducirlo de nuestro modelo 3D a las instrucciones para la impresora.  Con el archivo G-Code listo, tenemos todo lo que necesitamos para imprimir nuestro modelo en 3D."</td>
+            </tr>
+            <tr>
+                 <td><strong>PASO 11 (1 minute):</strong> Proyectar Diapositiva 19 "El Dato Curioso".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Curiosamente, el término 'Slicing' en la impresión 3D proviene de la forma en que las primeras impresoras 3D trabajaban, construyendo objetos capa por capa. De hecho, si cortáramos un objeto real en rebanadas muy finas y las apiláramos, obtendríamos la misma forma. El proceso de 'Slicing' toma esa idea y la aplica de manera virtual para que nuestras impresoras puedan construir objetos tridimensionales a partir de modelos digitales. Una idea que parece tan sencilla, ha sido clave para la impresión 3D."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 12 (1 minuto):</strong> Proyectar Diapositiva 20 "Revisión de Objetivos".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Hemos alcanzado nuestros objetivos de hoy. Comprenden el concepto de 'Slicing' y sus variables, conocen la plataforma AstroPrint, y saben cómo preparar un modelo para impresión 3D.  ¡Excelente trabajo, Genios!"</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 4 -->
+<div id="activity-4" class="activity">
+    <div class="banner" onclick="toggleContent('state_change')">
+        <div class="title">👂 Actividad 4: State Change ⏰ Tiempo: 2 minutos</div>
+        <div class="subtitle">Actividad para estimular la escucha y la concentración.</div>
+    </div>
+    <div id="state_change" class="content">
+        <table>
+             <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 21 "Cierre de Ojos y Escucha".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "Vamos a hacer una pausa para mejorar nuestra concentración. Cierren los ojos y escuchen atentamente los sonidos a su alrededor durante 1 minuto.  Concéntrense en los diferentes sonidos que perciben, desde los más cercanos hasta los más lejanos.  Este ejercicio les ayudará a relajar la mente y a mejorar la percepción auditiva."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (1 minuto):</strong> Proyectar Diapositiva 22 "Cronómetro - 1 Minuto".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+            <tr>
+                 <td><strong>PASO 3 (0.5 minutos):</strong> Proyectar Diapositiva 23 "Reflexión sobre la Escucha".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "¡Muy bien! Este ejercicio nos ayuda a agudizar nuestra percepción auditiva y a mejorar nuestra concentración. Ahora, estamos listos para continuar con las siguientes actividades con una mente clara."</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 5 -->
+<div id="activity-5" class="activity">
+    <div class="banner" onclick="toggleContent('team_gnius')">
+        <div class="title">🤝 Actividad 5: Team Gnius ⏰ Tiempo: 5 minutos</div>
+        <div class="subtitle">Organización de equipos para el reto y planificación de tareas.</div>
+    </div>
+    <div id="team_gnius" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 24 "Formación de Parejas".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, para el reto de hoy, trabajen con un compañero diferente a la clase anterior. Tómense un momento para formar sus parejas y sentarse juntos."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (1 minuto):</strong> Proyectar Diapositiva 25 "Cronómetro - 1 Minuto".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+            <tr>
+                 <td><strong>PASO 3 (0.5 minutos):</strong> Proyectar Diapositiva 26 "Recoger Magic Tablets".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Ahora que tienen sus equipos, envíen a un representante por su Magic Tablet. La necesitarán para trabajar en el reto de hoy."</td>
+            </tr>
+            <tr>
+                 <td><strong>PASO 4 (1 minuto):</strong> Proyectar Diapositiva 27 "Cronómetro - 1 Minuto".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 5 (2 minutos):</strong> Proyectar Diapositiva 28 "Planificación de Tareas".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "Ahora, organicen las tareas que necesitan para el Challenge de hoy en su tablero Kanban. Tienen dos minutos para definir qué tareas harán, quién las hará, y cómo organizarán el trabajo en equipo. Recuerden que la planificación es fundamental para que todo salga de manera organizada y eficiente, como si fueran un equipo de ingenieros preparando un proyecto."</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 6 -->
+<div id="activity-6" class="activity">
+    <div class="banner" onclick="toggleContent('challenge')">
+        <div class="title">🏆 Actividad 6: Challenge ⏰ Tiempo: 14.5 minutos</div>
+        <div class="subtitle">Preparación de modelos para impresión 3D usando AstroPrint.</div>
+    </div>
+    <div id="challenge" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 29 "Challenge".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, llegó el momento de aplicar lo que aprendieron en el Brain Gym. En este reto, configurarán su perfil de impresora en AstroPrint y prepararán un modelo para impresión 3D. ¡Pongan a prueba sus habilidades!"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (2 minutes):</strong> Proyectar Diapositiva 30 "Configuración y Slicing".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "El primer paso es buscar las especificaciones de la impresora 3D presente en el aula, la Ender 3 V3 KE, y configurar su perfil de impresora en AstroPrint.  Luego, cortarán (slicing) el modelo 3D que generaron en la misión anterior y que guardaron como STL. Finalmente, diseñarán en TinkerCAD un soporte para teléfono de una sola pieza y que no necesite soportes para imprimirse. Después, exportarán ese soporte y lo subirán a AstroPrint, donde harán el 'Slicing' para que el soporte se pueda imprimir en 5 minutos como máximo. Los niveles de dificultad son:
+                 <ul>
+                    <li><strong>Rookie:</strong> Configurar el perfil de la impresora (Ender 3 V3 KE) en AstroPrint y hacer el 'Slicing' del modelo de la misión anterior con los ajustes básicos.</li>
+                    <li><strong>Master:</strong> (+) Además del nivel anterior, diseñar en TinkerCAD un soporte para teléfono simple que no necesite soportes para imprimirse.</li>
+                    <li><strong>Hacker:</strong> (+)  Diseñar el soporte para teléfono, subirlo a AstroPrint, y configurarlo para que se imprima en menos de 5 minutos, cuidando la calidad de impresión.</li>
+                 </ul>
+                 Recuerden que la planificación y la creatividad serán esenciales para completar este reto de manera exitosa."</td>
+            </tr>
+            <tr>
+                 <td><strong>PASO 3 (10 minutos):</strong> Proyectar Diapositiva 31 "Cronómetro - 10 Minutos".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 4 (1 minuto):</strong> Proyectar Diapositiva 32 "Presentación de Modelos".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Ahora, cada equipo tendrá un minuto para mostrar sus resultados. Expliquen cómo configuraron el perfil de la impresora en AstroPrint, qué ajustes hicieron en el 'Slicing' y cómo diseñaron el soporte para teléfono. Compartan sus experiencias y aprendan de los enfoques de otros."</td>
+            </tr>
+             <tr>
+                <td><strong>PASO 5 (1 minute):</strong> Proyectar Diapositiva 33 "Cronómetro - 1 Minuto".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+            <tr>
+                 <td><strong>PASO 6 (0.5 minutos):</strong> Proyectar Diapositiva 34 "Objetivos Alcanzados".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "Hemos completado todos los objetivos de nuestra misión.  Comprenden el concepto de Slicing y sus variables, conocen la plataforma AstroPrint, y saben cómo preparar un modelo para impresión 3D en esta plataforma.  ¡Excelente trabajo, Genios!"</td>
+            </tr>
+             <tr>
+                <td><strong>PASO 7 (0.5 minutos):</strong> Proyectar Diapositiva 35 "You've Got Mon-e".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "¡Felicidades, Genios! Han demostrado su habilidad para trabajar con la impresión 3D y para configurar los parámetros del 'Slicing'. Todos se llevan Mon-e por su esfuerzo. ¡Sigamos creando y aprendiendo juntos!"</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 7 -->
+<div id="activity-7" class="activity">
+    <div class="banner" onclick="toggleContent('easter_egg')">
+        <div class="title">🥚 Actividad 7: Easter Egg ⏰ Tiempo: 2 minutos</div>
+        <div class="subtitle">Evaluación de la atención y la memoria.</div>
+    </div>
+    <div id="easter_egg" class="content">
+        <table>
+             <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 36 "Easter Egg - Pregunta".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, llegó el momento del Easter Egg. La siguiente diapositiva tiene una pregunta sobre algo que mencioné durante el Brain Gym. Los tres primeros en levantar la mano y responder correctamente ganarán Mon-e. Recuerden no decir la respuesta en voz alta, solo levanten la mano. ¿Listos?"</td>
+            </tr>
+            <tr>
+                 <td><strong>PASO 2 (0.5 minutos):</strong> Proyectar Diapositiva 37 "Pregunta del Easter Egg".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "¿Cuál es el nombre del formato en el que se guardan las instrucciones para la impresora 3D, también conocido como el 'lenguaje' de la impresora?"</td>
+            </tr>
+             <tr>
+                <td><strong>PASO 3 (1 minuto):</strong> Proyectar Diapositiva 38 "Respuesta Correcta".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "Uno, ven y dime la respuesta al oído.  Ahora tú, dos.  Y por último, el tres. La respuesta correcta es: G-Code. ¡Muy bien, los ganadores se llevan Mon-e!"</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 8 -->
+<div id="activity-8" class="activity">
+    <div class="banner" onclick="toggleContent('honor_dojo')">
+        <div class="title">🎖️ Actividad 8: Honor de Dojo ⏰ Tiempo: 2 minutos</div>
+        <div class="subtitle">Cierre de la clase y orden del espacio de trabajo.</div>
+    </div>
+    <div id="honor_dojo" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (2 minutos):</strong> Proyectar Diapositiva 39 "Honor the Dojo".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, hemos terminado por hoy. Por favor, cada equipo pase al frente para devolver su Magic Tablet y asegúrense de dejar sus áreas de trabajo limpias y ordenadas.  Recordemos que mantener el orden es parte de nuestro compromiso con el aprendizaje. ¡Gracias por su esfuerzo y colaboración!"</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- -------------------------------------------------Espacio para Actividades --------------------------------------------------------- -->
+
+</div>
+
+</body>
+</html>
